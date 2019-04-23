@@ -17,9 +17,11 @@ const shootTimeClass = (shootTime) => {
     case 'Evening':
       selectedClass = 'bg-info';
       break;
+
     case 'After Dark':
       selectedClass = 'bg-danger';
       break;
+
     default:
       selectedClass = '';
   }
@@ -28,16 +30,15 @@ const shootTimeClass = (shootTime) => {
 
 const domStringBuilder = (locArray) => {
   let domString = '';
+  domString += '<div class="row">';
   locArray.forEach((location) => {
-    domString += `<div id="${location.id}" class="card col-2" style="width: 18rem;">`;
-    domString += `<h5 class="card-header ${shootTimeClass(location.shootTime)}">${location.name}</h5>`;
-    domString += `<img class="card-img-top" src=${location.imageUrl} alt="Card image cap">`;
-    domString += '<div class="card-body">';
-    domString += `<p class="card-text">${location.address}</p>`;
-    // domString += '<a href="#" class="btn btn-primary">Go somewhere</a>';
-    domString += '</div>';
+    domString += `<div id="${location.shootTime}" class="col-2 card location" style="width: 18rem;">`;
+    domString += `<div class="card-header ${shootTimeClass(location.shootTime)}">${location.name}</div>`;
+    domString += `<img src="${location.imageUrl}" class="card-img-top">`;
+    domString += `<div class="card-text">${location.address}</div>`;
     domString += '</div>';
   });
+  domString += '</div>';
   util.printToDom('locations', domString);
 };
 
@@ -65,16 +66,32 @@ const filterButtonEvent = (e) => {
   }
 };
 
+const filterByTextEvent = (e) => {
+  const searchText = e.target.value;
+  const searchLocations = locations.filter((x) => {
+    const hasName = x.name.includes(searchText);
+    const hasAddress = x.address.includes(searchText);
+    return hasName || hasAddress;
+  });
+  domStringBuilder(searchLocations);
+};
+
 const initializeLocations = () => {
   locationsData.getLocationsData()
     .then((resp) => {
-      const locationResults = resp.data.locations;
-      locations = locationResults;
-      domStringBuilder();
-      document.getElementById('all').addEventListener('click', filterButtonEvent);
+      const movieResults = resp.data.locations;
+      locations = movieResults;
+      domStringBuilder(locations);
+      document.getElementById('After Dark').addEventListener('click', filterButtonEvent);
+      document.getElementById('Afternoon').addEventListener('click', filterButtonEvent);
+      document.getElementById('Evening').addEventListener('click', filterButtonEvent);
+      document.getElementById('Morning').addEventListener('click', filterButtonEvent);
+      document.getElementById('search-input').addEventListener('keyup', filterByTextEvent);
     })
     .catch(err => console.error(err));
+  // .catch(err) => {
+  //   console.error(err)
+  // });
 };
-
 
 export default { initializeLocations };
