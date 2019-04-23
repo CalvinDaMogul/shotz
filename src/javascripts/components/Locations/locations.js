@@ -29,12 +29,11 @@ const shootTimeClass = (shootTime) => {
 const domStringBuilder = (locArray) => {
   let domString = '';
   locArray.forEach((location) => {
-    domString += `<div id="${location.id}" class="card col-2" style="width: 18rem;">`;
-    domString += `<h5 class="card-header ${shootTimeClass(location.shootTime)}">${location.name}</h5>`;
-    domString += `<img class="card-img-top" src=${location.imageUrl} alt="Card image cap">`;
+    domString += `<div id=${location.id} class="card location col-2">`;
+    domString += `<div class="card-header ${shootTimeClass(location.shootTime)}">${location.name}</div>`;
     domString += '<div class="card-body">';
-    domString += `<p class="card-text">${location.address}</p>`;
-    // domString += '<a href="#" class="btn btn-primary">Go somewhere</a>';
+    domString += `<img class="card-img-top" src="${location.imageUrl}" alt="${location.name}">`;
+    domString += `<h5 class="card-title">${location.address}</h5>`;
     domString += '</div>';
     domString += '</div>';
   });
@@ -65,16 +64,30 @@ const filterButtonEvent = (e) => {
   }
 };
 
+const filterByTextEvent = (e) => {
+  const searchText = e.target.value;
+  const searchLocations = locations.filter((x) => {
+    const hasName = x.name.includes(searchText);
+    const hasAddress = x.address.includes(searchText);
+    return hasName || hasAddress;
+  });
+  domStringBuilder(searchLocations);
+};
+
 const initializeLocations = () => {
   locationsData.getLocationsData()
     .then((resp) => {
       const locationResults = resp.data.locations;
       locations = locationResults;
-      domStringBuilder();
+      domStringBuilder(locations);
+      document.getElementById('dark').addEventListener('click', filterButtonEvent);
+      document.getElementById('afternoon').addEventListener('click', filterButtonEvent);
+      document.getElementById('evening').addEventListener('click', filterButtonEvent);
+      document.getElementById('morning').addEventListener('click', filterButtonEvent);
       document.getElementById('all').addEventListener('click', filterButtonEvent);
+      document.getElementById('search-input').addEventListener('keyup', filterByTextEvent);
     })
     .catch(err => console.error(err));
 };
-
 
 export default { initializeLocations };
