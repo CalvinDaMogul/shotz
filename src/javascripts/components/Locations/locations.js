@@ -17,11 +17,9 @@ const shootTimeClass = (shootTime) => {
     case 'Evening':
       selectedClass = 'bg-info';
       break;
-
     case 'After Dark':
       selectedClass = 'bg-danger';
       break;
-
     default:
       selectedClass = '';
   }
@@ -30,15 +28,15 @@ const shootTimeClass = (shootTime) => {
 
 const domStringBuilder = (locArray) => {
   let domString = '';
-  domString += '<div class="row">';
   locArray.forEach((location) => {
-    domString += `<div id="${location.shootTime}" class="col-2 card location" style="width: 18rem;">`;
+    domString += `<div id=${location.id} class="card location col-2">`;
     domString += `<div class="card-header ${shootTimeClass(location.shootTime)}">${location.name}</div>`;
-    domString += `<img src="${location.imageUrl}" class="card-img-top">`;
-    domString += `<div class="card-text">${location.address}</div>`;
+    domString += '<div class="card-body">';
+    domString += `<img class="card-img-top" src="${location.imageUrl}" alt="${location.name}">`;
+    domString += `<h5 class="card-title">${location.address}</h5>`;
+    domString += '</div>';
     domString += '</div>';
   });
-  domString += '</div>';
   util.printToDom('locations', domString);
 };
 
@@ -79,19 +77,17 @@ const filterByTextEvent = (e) => {
 const initializeLocations = () => {
   locationsData.getLocationsData()
     .then((resp) => {
-      const movieResults = resp.data.locations;
-      locations = movieResults;
+      const locationResults = resp.data.locations;
+      locations = locationResults;
       domStringBuilder(locations);
-      document.getElementById('After Dark').addEventListener('click', filterButtonEvent);
-      document.getElementById('Afternoon').addEventListener('click', filterButtonEvent);
-      document.getElementById('Evening').addEventListener('click', filterButtonEvent);
-      document.getElementById('Morning').addEventListener('click', filterButtonEvent);
+      document.getElementById('dark').addEventListener('click', filterButtonEvent);
+      document.getElementById('afternoon').addEventListener('click', filterButtonEvent);
+      document.getElementById('evening').addEventListener('click', filterButtonEvent);
+      document.getElementById('morning').addEventListener('click', filterButtonEvent);
+      document.getElementById('all').addEventListener('click', filterButtonEvent);
       document.getElementById('search-input').addEventListener('keyup', filterByTextEvent);
     })
     .catch(err => console.error(err));
-  // .catch(err) => {
-  //   console.error(err)
-  // });
 };
 
 export default { initializeLocations };
