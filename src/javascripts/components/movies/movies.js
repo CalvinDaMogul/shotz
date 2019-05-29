@@ -41,17 +41,20 @@ const domStringBuilder = (movieName) => {
       domString += '<div class="card" style="width: 18rem;">';
       domString += `<div class="card-body" id=${movie.id}>`;
       domString += `<h5 class="card-title">${movie.name}</h5>`;
-      domString += `<p class="card-text">${movie.genre}</p>`;
-      domString += `<p class="card-text">${movie.releaseDate}</p>`;
+      domString += `<p class="card-text" id="ptag">Movie Type: ${movie.genre}</p>`;
+      domString += `<p class="card-text" id="ptag"> Release:${movie.releaseDate}</p>`;
+      domString += `<img class="card-img-top" src="${movie.imgUrl}" alt="Card image cap">`;
       domString += `<p class="card-text">${movie.description}</p>`;
-      domString += `<p class="card-text"> locations:${movie.locations.length}</p>`;
+      domString += `<p class="card-text"> Locations:${movie.locations.length}</p>`;
+      domString += '<button type="button" id="click"class="btn btn-light">Movie Viewings</button>';
       domString += '</div>';
       domString += '</div>';
     }
   });
-  
+
   util.printToDom('movies', domString);
 };
+
 
 const cardClicked = (e) => {
   console.error('cardClicked');
@@ -69,10 +72,11 @@ const initializeMovies = () => {
 
     .catch(err => console.error(err));
 
-  console.error('allCards');
   const allCards = document.getElementsByClassName('card');
+  const newCards = Array.from(allCards);
+  console.error('allCards');
   console.error(allCards.length);
-  allCards.forEach((card, index) => {
+  newCards.forEach((card, index) => {
     console.error(index);
     card.addEventListener('click', cardClicked);
   });

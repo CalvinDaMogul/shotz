@@ -1,10 +1,11 @@
 {
 	"movies": [{
 			"id": "movie1",
-			"name": "Super Secret Movie",
-			"genre": "Thriller",
+			"name": "Super Secret Movie1",
+			"genre": "Action",
 			"releaseDate": "10/15/2020",
-			"description": "super exclusive can't tell you",
+			"imgUrl": "https://upload.wikimedia.org/wikipedia/en/0/0c/Black_Panther_film_poster.jpg",
+			"description": "Super exclusive can't tell you",
 			"locations": [
 				"location1",
 				"location3",
@@ -14,9 +15,10 @@
 		{
 			"id": "movie2",
 			"name": "Super Secret Movie2",
-			"genre": "Thriller",
+			"genre": "Action",
 			"releaseDate": "10/16/2020",
-			"description": "super exclusive can't tell you",
+			"imgUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b8/Spider-Man_Into_the_Spider-Verse_%282018_poster%29.png/220px-Spider-Man_Into_the_Spider-Verse_%282018_poster%29.png",
+			"description": "Super exclusive can't tell you",
 			"locations": [
 				"location1",
 				"location2"
@@ -25,9 +27,10 @@
 		{
 			"id": "movie3",
 			"name": "Super Secret Movie3",
-			"genre": "Thriller",
+			"genre": "Action",
 			"releaseDate": "10/17/2020",
-			"description": "super exclusive can't tell you",
+			"imgUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/d/dc/Meteor_man.jpg/220px-Meteor_man.jpg",
+			"description": "Super exclusive can't tell you",
 			"locations": [
 				"location1",
 				"location2",
@@ -43,9 +46,10 @@
 		{
 			"id": "movie4",
 			"name": "Super Secret Movie4",
-			"genre": "Thriller",
+			"genre": "Action",
 			"releaseDate": "10/18/2020",
-			"description": "super exclusive can't tell you",
+			"imgUrl": "https://i.pinimg.com/originals/94/8f/c2/948fc2d9bdedbfad882f43f723f6acc5.jpg",
+			"description": "Super exclusive can't tell you",
 			"locations": [
 				"location6",
 				"location7",
