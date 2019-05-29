@@ -1,3 +1,15 @@
 #movies{
     display: flex;
+    flex-wrap: wrap;
+    height: auto;
+    justify-content: center;
+}
+
+.card {
+    background-color: #E9C46A;
+}
+
+#ptag {
+    font-style: bold;
+    font-family: 'Courier New', Courier, monospace;
 }
