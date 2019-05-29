@@ -1,7 +1,7 @@
 {
 	"movies": [{
 			"id": "movie1",
-			"name": "Super Secret Movie1",
+			"name": "Black Panther",
 			"genre": "Action",
 			"releaseDate": "10/15/2020",
 			"imgUrl": "https://upload.wikimedia.org/wikipedia/en/0/0c/Black_Panther_film_poster.jpg",
@@ -14,7 +14,7 @@
 		},
 		{
 			"id": "movie2",
-			"name": "Super Secret Movie2",
+			"name": "Spider-Man: Into the Spider-Verse",
 			"genre": "Action",
 			"releaseDate": "10/16/2020",
 			"imgUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b8/Spider-Man_Into_the_Spider-Verse_%282018_poster%29.png/220px-Spider-Man_Into_the_Spider-Verse_%282018_poster%29.png",
@@ -26,7 +26,7 @@
 		},
 		{
 			"id": "movie3",
-			"name": "Super Secret Movie3",
+			"name": "Meteor Man",
 			"genre": "Action",
 			"releaseDate": "10/17/2020",
 			"imgUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/d/dc/Meteor_man.jpg/220px-Meteor_man.jpg",
@@ -45,7 +45,7 @@
 		},
 		{
 			"id": "movie4",
-			"name": "Super Secret Movie4",
+			"name": "Blankman",
 			"genre": "Action",
 			"releaseDate": "10/18/2020",
 			"imgUrl": "https://i.pinimg.com/originals/94/8f/c2/948fc2d9bdedbfad882f43f723f6acc5.jpg",
